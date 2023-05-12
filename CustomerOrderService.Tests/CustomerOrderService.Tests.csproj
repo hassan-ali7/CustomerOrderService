@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.props" Condition="Exists('..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.props')" />
+  <Import Project="..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.props" Condition="Exists('..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.props')" />
+  <Import Project="..\CustomerOrderService\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props" Condition="Exists('..\CustomerOrderService\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" />
+  <Import Project="..\CustomerOrderService\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\CustomerOrderService\packages\NUnit.3.13.3\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD063224-8B6F-48CE-96A9-49FDA95DD1A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomerOrderService.Tests</RootNamespace>
+    <AssemblyName>CustomerOrderService.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\lib\net462\Microsoft.VisualStudio.CodeCoverage.Shim.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\CustomerOrderService\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CustomerServiceTests.cs" />
+    <Compile Include="EmployeeTests.cs" />
+    <Compile Include="ManagerTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VicePresidentTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerOrderService\CustomerOrderService\CustomerOrderService.csproj">
+      <Project>{aafd93d2-f796-4dcb-9003-78b8ddb3b7b3}</Project>
+      <Name>CustomerOrderService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\CustomerOrderService\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\NUnit.3.13.3\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\CustomerOrderService\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\NUnit3TestAdapter.4.4.2\build\net462\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.props')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.props'))" />
+    <Error Condition="!Exists('..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.targets'))" />
+    <Error Condition="!Exists('..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.props')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.props'))" />
+    <Error Condition="!Exists('..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.targets'))" />
+  </Target>
+  <Import Project="..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.targets" Condition="Exists('..\CustomerOrderService\packages\Microsoft.CodeCoverage.17.5.0\build\netstandard2.0\Microsoft.CodeCoverage.targets')" />
+  <Import Project="..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.targets" Condition="Exists('..\CustomerOrderService\packages\Microsoft.NET.Test.Sdk.17.5.0\build\net462\Microsoft.NET.Test.Sdk.targets')" />
+</Project>
